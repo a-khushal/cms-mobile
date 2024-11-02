@@ -10,7 +10,7 @@ import { ContentType, RouteName } from "app/constants"
 
 import { AutoImage } from "./AutoImage"
 import { Button } from "./Button"
-import CircularProgress from "./Progress"
+import { Progress } from "./Progress"
 
 export interface CourseCardProps {
   /** an optional style override useful for padding & margin. */
@@ -41,9 +41,9 @@ export const CourseCard = observer(function CourseCard(props: CourseCardProps) {
         style={$image}
       />
       <View style={$subContainer}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <View style={$subContainerChild}>
           <Text style={$title} text="Cohort 3.0 | Web Dev" />
-          <CircularProgress progress={50} size={50} />
+          <Progress preset="circularProgress" progress={50} size={50} />
         </View>
         <Button onPress={handleViewContentPress} text="View Content" />
         <TouchableOpacity activeOpacity={0.8} onPress={handleJoinDiscordPress} style={$footer}>
@@ -71,6 +71,12 @@ const $image: ImageStyle = {
 const $subContainer: ViewStyle = {
   padding: spacing.md,
   gap: spacing.md,
+}
+
+const $subContainerChild: ViewStyle = {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between'
 }
 
 const $title: TextStyle = {
